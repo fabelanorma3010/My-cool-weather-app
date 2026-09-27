@@ -1,0 +1,16 @@
+body {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/181/572/original/how_to_love_yourself_as_the_person_you_are.png?1790476516");
+  background-size: cover;
+  font-family: "Playwrite BE WAL Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.weather-app {
+  background: purple;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 30px 50px rgb(51, 51, 171);
+  border-radius: 10px;
+  padding: 30px;
+}
