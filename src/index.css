@@ -2,7 +2,6 @@ body {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/181/572/original/how_to_love_yourself_as_the_person_you_are.png?1790476516");
   background-size: cover;
   font-family: "Playwrite BE WAL Guides", cursive;
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -49,12 +48,7 @@ a {
 .weather-app-details {
   font-size: 16px;
   color: black;
-  line-height: 24px;
-  font-weight: 500;
-}
-.weather-app-details strong {
-  font-size: 16px;
-  color: white;
+  font-weight: 8000;
 }
 
 .weather-app-temperature-container {
