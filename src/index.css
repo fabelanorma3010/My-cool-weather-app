@@ -11,11 +11,8 @@ a {
 
 .weather-app {
   background: rgb(226, 30, 154);
-  max-width: 1000px;
-  margin: 30px auto;
-  box-shadow: 0 30px 30px rgb(211, 30, 123);
-  border-radius: 35px;
-  padding: 30px;
+  max-width: 2000px;
+  max-height: 5000px;
 }
 
 .search-form-input {
