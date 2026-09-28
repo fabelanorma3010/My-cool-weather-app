@@ -13,7 +13,7 @@ a {
   background: rgb(145, 187, 251);
   max-width: 1000px;
   margin: 20px auto;
-  box-shadow: 0 30px 30px rgb(51, 51, 171);
+  box-shadow: 0 30px 30px rgb(211, 30, 123);
   border-radius: 40px;
   padding: 30px;
 }
@@ -58,6 +58,16 @@ a {
   width: 60px;
   height: 60px;
   text-align: center;
+}
+.weather-forecast-temperatures {
+  text-align: center;
+  color: #e21385;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.weather-forecast-temperature {
+  padding: 0 10px;
 }
 .weather-app-temperature {
   font-size: 80px;
