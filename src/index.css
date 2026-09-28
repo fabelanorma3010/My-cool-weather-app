@@ -10,9 +10,13 @@ a {
 }
 
 .weather-app {
-  background: rgb(226, 30, 154);
-  max-width: 2000px;
-  max-height: 5000px;
+  background: rgb(27, 106, 197);
+  max-width: 1000px;
+  margin: 30px auto;
+  box-shadow: 0 30px 30px rgb(211, 30, 123);
+  border-radius: 35px;
+  padding: 30px;
+  max-width: 1000px;
 }
 
 .search-form-input {
@@ -67,11 +71,11 @@ a {
   padding: 0 10px;
 }
 .weather-app-temperature {
-  font-size: 80px;
+  font-size: 40px;
   font-weight: bold;
 }
 .weather-app-unit {
-  font-size: 28px;
+  font-size: 40px;
   position: relative;
   top: -10px;
 }
