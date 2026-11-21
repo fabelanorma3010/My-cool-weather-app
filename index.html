@@ -14,8 +14,46 @@
     <title>my awesome weather app</title>
   </head>
   <body>
-    <div class="weather-app">
+    <button
+      type="button"
+      class="app-toggle-btn"
+      id="app-toggle-btn"
+      title="Close app"
+      aria-label="Close app"
+      aria-controls="weather-app"
+      aria-expanded="true"
+    >
+      ×
+    </button>
+    <div class="live-clock" id="live-clock">
+      <button class="clock-icon-btn" id="clock-toggle-btn" title="Toggle clock" aria-label="Toggle clock">
+        <span class="clock-icon">🕒</span>
+      </button>
+      <div class="clock-details" id="clock-details">
+        <span id="clock-time">--:--:--</span>
+        <button class="clock-close-btn" id="clock-close-btn" title="Close clock" aria-label="Close clock">×</button>
+      </div>
+    </div>
+    <div class="weather-app" id="weather-app">
       <header>
+        <div class="header-top-bar">
+          <div class="language-selector-wrapper">
+            <label for="language-select" class="language-icon" title="Choose language">🌐</label>
+            <select id="language-select" class="language-select" aria-label="Select Language">
+              <option value="en">English (US)</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="pt">Português</option>
+              <option value="it">Italiano</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="ar">العربية</option>
+              <option value="ru">Русский</option>
+            </select>
+          </div>
+          <div id="google_translate_element" class="google-translate-box"></div>
+        </div>
         <form class="search-form" id="search-form">
           <input
             type="search"
@@ -24,7 +62,7 @@
             id="search-form-input"
             class="search-form-input"
           />
-          <input type="submit" value="Search" class="search-form-button" />
+          <input type="submit" value="Search" class="search-form-button" id="search-form-button" />
         </form>
       </header>
       <main>
@@ -35,18 +73,162 @@
               <span id="time"></span>,
               <span id="description"></span>
               <br />
-              Humidity: <strong id="humidity"></strong>, Wind:
-              <strong id="wind-speed"></strong>
+              <span id="humidity-label">Humidity</span>: <strong id="humidity"></strong>,
+              <span id="wind-label">Wind</span>: <strong id="wind-speed"></strong>
             </p>
           </div>
           <div class="weather-app-temperature-container">
             <div id="icon"></div>
             <div class="weather-app-temperature" id="temperature"></div>
-            <div class="weatehr-app-unit">°C</div>
+            <div class="weather-app-unit-container">
+              <button type="button" class="weather-app-unit active" id="celsius-link" title="Celsius">°C</button>
+              <span class="weather-app-unit-divider">|</span>
+              <button type="button" class="weather-app-unit" id="fahrenheit-link" title="Fahrenheit">°F</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Day Forecast Section -->
+        <div class="feature-card" id="forecast-card">
+          <div class="feature-card-header" data-toggle="forecast-card" title="Click to collapse / expand">
+            <span class="feature-card-title">📅 <span id="forecast-section-title">5-Day Forecast</span></span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle 5-Day Forecast">▲</button>
+          </div>
+          <div class="feature-card-body">
+            <div class="weather-forecast" id="forecast"></div>
+          </div>
+        </div>
+
+        <!-- Joke Generator Section -->
+        <div class="feature-card" id="joke-card">
+          <div class="feature-card-header" data-toggle="joke-card" title="Click to collapse / expand">
+            <span class="feature-card-title">😄 <span id="joke-section-title">Joke Generator</span></span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle Joke Generator">▲</button>
+          </div>
+          <div class="feature-card-body">
+            <form id="joke-form" class="feature-form">
+              <input
+                type="text"
+                placeholder="Enter a topic for a joke (e.g. weather)..."
+                class="feature-input"
+                id="joke-input"
+              />
+              <button type="submit" class="feature-button" id="joke-button">
+                Tell me a joke 😄
+              </button>
+            </form>
+            <div class="feature-output" id="joke-output"></div>
+          </div>
+        </div>
+
+        <!-- Bible Verse Generator Section -->
+        <div class="feature-card" id="bible-card">
+          <div class="feature-card-header" data-toggle="bible-card" title="Click to collapse / expand">
+            <span class="feature-card-title">📖 <span id="bible-section-title">Bible Verse Generator</span></span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle Bible Verse Generator">▲</button>
+          </div>
+          <div class="feature-card-body">
+            <form id="bible-form" class="feature-form">
+              <input
+                type="text"
+                placeholder="Enter a theme (e.g. peace, hope, love, strength)..."
+                class="feature-input"
+                id="bible-input"
+              />
+              <button type="submit" class="feature-button" id="bible-button">
+                Get Bible Verse 📖
+              </button>
+            </form>
+            <div class="feature-output" id="bible-output"></div>
+          </div>
+        </div>
+
+        <!-- Poem Generator Section -->
+        <div class="feature-card" id="poem-card">
+          <div class="feature-card-header" data-toggle="poem-card" title="Click to collapse / expand">
+            <span class="feature-card-title">✍️ <span id="poem-section-title">Poem Generator</span></span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle Poem Generator">▲</button>
+          </div>
+          <div class="feature-card-body">
+            <form id="poem-form" class="feature-form">
+              <input
+                type="text"
+                placeholder="Enter a topic for a poem (e.g. rain, flowers, sunshine)..."
+                class="feature-input"
+                id="poem-input"
+              />
+              <button type="submit" class="feature-button" id="poem-button">
+                Write a Poem ✍️
+              </button>
+            </form>
+            <div class="feature-output" id="poem-output"></div>
+          </div>
+        </div>
+
+        <!-- Word of the Day Section -->
+        <div class="feature-card" id="word-card">
+          <div class="feature-card-header" data-toggle="word-card" title="Click to collapse / expand">
+            <span class="feature-card-title">📚 <span id="word-section-title">Word of the Day</span></span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle Word of the Day">▲</button>
+          </div>
+          <div class="feature-card-body">
+            <div class="feature-form feature-actions-center">
+              <button type="button" class="feature-button" id="word-button">
+                Get Word of the Day 📚
+              </button>
+            </div>
+            <div class="feature-output" id="word-output"></div>
+          </div>
+        </div>
+
+        <!-- More Stories Section -->
+        <div class="feature-card" id="stories-card">
+          <div class="feature-card-header" data-toggle="stories-card" title="Click to collapse / expand">
+            <span class="feature-card-title">🎬 More Stories</span>
+            <button type="button" class="feature-toggle-btn" aria-label="Toggle More Stories">▲</button>
+          </div>
+          <div class="feature-card-body stories-card-body">
+            <blockquote
+              class="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/Df1vbwZxLZH/?utm_source=ig_embed&amp;utm_campaign=loading"
+              data-instgrm-version="14"
+            >
+              <a
+                href="https://www.instagram.com/reel/Df1vbwZxLZH/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View this post on Instagram
+              </a>
+            </blockquote>
+            <blockquote
+              class="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/Df1qnjuMQeA/?utm_source=ig_embed&amp;utm_campaign=loading"
+              data-instgrm-version="14"
+            >
+              <a
+                href="https://www.instagram.com/reel/Df1qnjuMQeA/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View this post on Instagram
+              </a>
+            </blockquote>
+            <p class="stories-coming-soon">More stories coming soon.</p>
           </div>
         </div>
       </main>
       <footer>
+        <div class="support-link">
+          <a
+            href="https://gofund.me/1a1e93f42"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Support this project on GoFundMe</a
+          >
+        </div>
         This project was coded by Coded by
         <a href="https://github.com/fabelanorma3010/" target="_blank"
           >Norma Fabela</a
@@ -63,5 +245,19 @@
       </footer>
     </div>
     <script src="src/index.js"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          },
+          'google_translate_element'
+        );
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script async src="https://www.instagram.com/embed.js"></script>
   </body>
 </html>
